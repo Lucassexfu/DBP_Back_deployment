@@ -107,14 +107,15 @@ public class comicService {
         Set<Comentarios> ComicComentarios = comic.getComentarios();
         Set<ComentarioComicResponse> ComentariosResponse = new HashSet<>();
         for(Comentarios c: ComicComentarios){
-            ComentariosResponse.add(new ComentarioComicResponse(c.getId(),c.getContenido(),c.getLikes(),c.getDislikes(),c.getUser().getNombre()));
+            ComentariosResponse.add(new ComentarioComicResponse(c.getId(),c.getContenido(),c.getLikes(),c.getDislikes()));
+            
         }
         List<Temporada> TemporadasComic= comic.getTemporadas();
         List<TemporadaDTO> TemporadasResponse= new ArrayList<>();
         for(Temporada t: TemporadasComic){
             TemporadasResponse.add(new TemporadaDTO(t.getId(),t.getNombre(),t.getDescripcion(),t.getUrl()));
         }
-        return new AllComicsResponse(comic.getId(), comic.getEstado(), comic.getNombre(), comic.getFecha_de_publicación(), comic.getDescripcion(), comic.getImagenes_description(), comic.getPrecio(), comic.getLikes(), comic.getDislikes(), comic.getGeneros(),comic.getAutor().getId(), comic.getUser().getNombre(), ComentariosResponse, TemporadasResponse);
+        return new AllComicsResponse(comic.getId(), comic.getEstado(), comic.getNombre(), comic.getFecha_de_publicación(), comic.getDescripcion(), comic.getImagenes_description(), comic.getPrecio(), comic.getLikes(), comic.getDislikes(), comic.getGeneros(),comic.getAutor().getId(), comic.getUser().getId(), ComentariosResponse, TemporadasResponse);
 
     }
 

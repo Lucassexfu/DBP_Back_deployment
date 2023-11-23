@@ -29,7 +29,7 @@ public class AllComicsResponse {
 
     private Long id_autor;
 
-    private String id_user;
+    private Long id_user;
 
     private Set<ComentarioComicResponse> comentarios = new HashSet<>();
     private List<TemporadaDTO> temporadas;  

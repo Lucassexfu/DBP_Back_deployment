@@ -14,5 +14,4 @@ public class ComentarioComicResponse {
     private String contenido;
     private Integer likes;
     private Integer dislikes; 
-    private String name_user;
 }
