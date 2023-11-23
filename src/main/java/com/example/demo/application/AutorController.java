@@ -47,6 +47,9 @@ public class AutorController {
     public ResponseEntity<AutorResponse> deleteAutor(@PathVariable Long id) {
         return new ResponseEntity<>(autorService.eliminarAutor(id), HttpStatus.OK);
     }
-
+    /* 
+    @PutMapping("/cambiar_autor/{id}")
+    public ResponseEntity<>
+    */
 
 }

@@ -25,7 +25,7 @@ import com.example.demo.domain.services.comicService;
 import com.example.demo.domain.services.usuarioService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/user")
 public class usuarioController {
     @Autowired

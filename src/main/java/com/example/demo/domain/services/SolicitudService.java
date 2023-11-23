@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.domain.DTOs.CambiarSolicitudDTO;
 import com.example.demo.domain.DTOs.ModificarSolicitudDTO;
 import com.example.demo.domain.DTOs.RequestSolicitudDTO;
 import com.example.demo.domain.entities.Solicitud;
@@ -74,7 +75,7 @@ public class SolicitudService {
         solicitudesRepository.deleteById(id);
         return new RequestSolicitudDTO(sols.getDescripcion(),sols.getOcupacion(), sols.getFecha(), sols.getUsuario_asking().getId(),comics);
     }
-    public String Modificar(ModificarSolicitudDTO cambio, String Nombre){
+    public ModificarSolicitudDTO Modificar(ModificarSolicitudDTO cambio, String Nombre){
         Usuario modU = usuarioRepository.findByNombre(Nombre);
         Solicitud tempSol = modU.getSolicitudes().get(0);
         tempSol.setDescripcion(cambio.getDescripcion());
@@ -83,6 +84,11 @@ public class SolicitudService {
         List<Solicitud> mdList = new ArrayList<>();
         mdList.add(tempSol);
         modU.setSolicitudes(mdList);
-        return "hecho";
+        return cambio;
+    }
+    public CambiarSolicitudDTO Cambiar(CambiarSolicitudDTO change, String Nombre){
+        Solicitud PastSolicitud = solicitudesRepository.findById(usuarioRepository.findByNombre(Nombre).getId()).get();
+        solicitudesRepository.save(new Solicitud(PastSolicitud.getId(), change.getDescripcion(), change.getOcupacion(), change.getFecha(), change.getComics_ids(), PastSolicitud.getUsuario_asking()));
+        return change;
     }
 }
