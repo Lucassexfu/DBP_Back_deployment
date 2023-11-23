@@ -115,7 +115,7 @@ public class comicService {
         for(Temporada t: TemporadasComic){
             TemporadasResponse.add(new TemporadaDTO(t.getId(),t.getNombre(),t.getDescripcion(),t.getUrl()));
         }
-        return new AllComicsResponse(comic.getId(), comic.getEstado(), comic.getNombre(), comic.getFecha_de_publicación(), comic.getDescripcion(), comic.getImagenes_description(), comic.getPrecio(), comic.getLikes(), comic.getDislikes(), comic.getGeneros(),comic.getAutor().getId(), ComentariosResponse, TemporadasResponse);
+        return new AllComicsResponse(comic.getId(), comic.getEstado(), comic.getNombre(), comic.getFecha_de_publicación(), comic.getDescripcion(), comic.getImagenes_description(), comic.getPrecio(), comic.getLikes(), comic.getDislikes(), comic.getGeneros(), ComentariosResponse, TemporadasResponse);
 
     }
 

@@ -26,9 +26,6 @@ public class AllComicsResponse {
     private Integer likes;
     private Integer dislikes;
     private Set<String> generos = new HashSet<>();
-
-    private Long id_autor;
-
     private Set<ComentarioComicResponse> comentarios = new HashSet<>();
     private List<TemporadaDTO> temporadas;  
 }

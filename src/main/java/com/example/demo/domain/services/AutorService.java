@@ -5,6 +5,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.domain.DTOs.AutorCambio;
 import com.example.demo.domain.DTOs.AutorResponse;
 import com.example.demo.domain.entities.Autor;
 import com.example.demo.domain.entities.Comic;
@@ -56,6 +57,14 @@ public class AutorService {
         comicRepository.saveAll(Comics);
         autorRepository.deleteById(id);
         return getAutor(existingAutor);
+    }
+    public AutorCambio CambiarAutor(AutorCambio UpdateAutor){
+        Autor PastAutort = autorRepository.findByNombre(UpdateAutor.getNombre()).get();
+        PastAutort.setEditorial(UpdateAutor.getEditorial());
+        PastAutort.setFecha(UpdateAutor.getFecha());
+        PastAutort.setNombre(UpdateAutor.getNombre());
+        autorRepository.save(PastAutort);
+        return UpdateAutor;
     }
 
 

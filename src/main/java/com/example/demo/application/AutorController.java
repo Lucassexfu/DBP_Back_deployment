@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.demo.domain.DTOs.AutorCambio;
 import com.example.demo.domain.DTOs.AutorResponse;
 import com.example.demo.domain.entities.Autor;
 import com.example.demo.domain.entities.Comic;
@@ -47,9 +48,11 @@ public class AutorController {
     public ResponseEntity<AutorResponse> deleteAutor(@PathVariable Long id) {
         return new ResponseEntity<>(autorService.eliminarAutor(id), HttpStatus.OK);
     }
-    /* 
+    
     @PutMapping("/cambiar_autor/{id}")
-    public ResponseEntity<>
-    */
+    public ResponseEntity<AutorCambio> CambiarAutor(@RequestBody AutorCambio autorCambio){
+        return new ResponseEntity<>(autorService.CambiarAutor(autorCambio), HttpStatus.OK);
+    }
+    
 
 }
