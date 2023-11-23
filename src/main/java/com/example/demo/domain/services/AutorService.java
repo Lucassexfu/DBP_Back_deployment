@@ -58,8 +58,8 @@ public class AutorService {
         autorRepository.deleteById(id);
         return getAutor(existingAutor);
     }
-    public AutorCambio CambiarAutor(AutorCambio UpdateAutor){
-        Autor PastAutort = autorRepository.findByNombre(UpdateAutor.getNombre()).get();
+    public AutorCambio CambiarAutor(AutorCambio UpdateAutor, Long id){
+        Autor PastAutort = autorRepository.findById(id).get();
         PastAutort.setEditorial(UpdateAutor.getEditorial());
         PastAutort.setFecha(UpdateAutor.getFecha());
         PastAutort.setNombre(UpdateAutor.getNombre());

@@ -50,8 +50,8 @@ public class AutorController {
     }
     
     @PutMapping("/cambiar_autor/{id}")
-    public ResponseEntity<AutorCambio> CambiarAutor(@RequestBody AutorCambio autorCambio){
-        return new ResponseEntity<>(autorService.CambiarAutor(autorCambio), HttpStatus.OK);
+    public ResponseEntity<AutorCambio> CambiarAutor(@RequestBody AutorCambio autorCambio, @PathVariable Long id){
+        return new ResponseEntity<>(autorService.CambiarAutor(autorCambio, id), HttpStatus.OK);
     }
     
 
