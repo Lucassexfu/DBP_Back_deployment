@@ -17,13 +17,13 @@ public class Temporada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre_temporada")
+    @Column(name = "nombre_temporada", length = 1000)
     private String nombre;
 
-    @Column(name = "descripcion_temporada")
+    @Column(name = "descripcion_temporada", length = 5000)
     private String descripcion;
 
-    @Column(name = "url_temporada")
+    @Column(name = "url_temporada", length = 5000)
     private String url;
 
     public Temporada(String nombre, String descripcion, String url) {

@@ -28,9 +28,13 @@ public class Comic {
     private String estado;
     private String nombre;
     private String fecha_de_publicación;
+
     @Column(length = 5000)
     private String descripcion;
+
+    @Column(length = 5000)
     private List<String> imagenes_description;
+    
     private Integer precio;
     private Integer likes;
     private Integer dislikes;
