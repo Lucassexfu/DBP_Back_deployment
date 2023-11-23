@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.demo.domain.entities.Autor;
 import com.example.demo.domain.entities.Comic;
+import com.example.demo.domain.entities.Temporada;
 import com.example.demo.infraestructure.autorRepository;
 import com.example.demo.infraestructure.comicRepository;
 //Cuarta modificación 
@@ -44,7 +45,7 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//Vamos a crear autores
-	/*
+	
 		Autor a1 = new Autor();
 		a1.setNombre("Emily Johnson");
 		a1.setEditorial("DC Comics");
@@ -378,7 +379,7 @@ public class DemoApplication implements CommandLineRunner {
 		temporadasC12.add(new Temporada("One Piece", "Monkey D. Luffy se niega a que nadie se interponga en su camino para convertirse en Rey de los Piratas. Se lanza a surcar los mares y se convertirá en un capitán dispuesto a no darse por vencido jamás hasta hacerse con el mayor tesoro de la historia: el legendario One Piece.", "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/f154230aab3191aba977f337d392f812.jpe"));
 		c12.setTemporadas(temporadasC12);
 		comicRepository.save(c12);
-	*/
+	
 	}
 
 }
