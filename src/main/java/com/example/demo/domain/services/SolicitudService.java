@@ -33,14 +33,13 @@ public class SolicitudService {
         sol.setDescripcion(solicitud.getOcupacion());
         sol.setOcupacion(solicitud.getOcupacion());
         sol.setFecha(solicitud.getFecha());
-        Usuario use = usuarioRepository.findById(solicitud.getUsuarioId()).get();
-        sol.setUsuario_asking(use);
+        Usuario UsuarioSolicitante = usuarioRepository.findByNombre(solicitud.getNombre()); 
+        sol.setUsuario_asking(UsuarioSolicitante);
         sol.setComics_ids(solicitanteList);
-        sol.setDescripcion(solicitud.getDescripcion());
-        List <Solicitud> solis = use.getSolicitudes();
-        solis.add(sol);
-        usuarioRepository.save(use);
-        solicitudesRepository.save(sol);
+        Solicitud solSaved = solicitudesRepository.save(sol);
+        List <Solicitud> solis = UsuarioSolicitante.getSolicitudes();
+        solis.add(solSaved);
+        usuarioRepository.save(UsuarioSolicitante);
         return "Solicitud enviada";
 
     }
@@ -53,8 +52,7 @@ public class SolicitudService {
             for(Long c: s.getComics_ids()){
                 comics.add(comicRepository.findById(c).get().getNombre());
             }
-            solsSalida.add(new RequestSolicitudDTO(s.getDescripcion(), s.getOcupacion(), s.getFecha(), s.getUsuario_asking().getId(), comics));
- 
+            solsSalida.add(new RequestSolicitudDTO(s.getDescripcion(), s.getOcupacion(), s.getFecha(), s.getUsuario_asking().getNombre(), comics));
         }
         return solsSalida;
     }
@@ -64,7 +62,7 @@ public class SolicitudService {
         for(Long c: sols.getComics_ids()){
             comics.add(comicRepository.findById(c).get().getNombre());
         }
-        return new RequestSolicitudDTO(sols.getDescripcion(),sols.getOcupacion(), sols.getFecha(), sols.getUsuario_asking().getId(),comics);
+        return new RequestSolicitudDTO(sols.getDescripcion(),sols.getOcupacion(), sols.getFecha(), sols.getUsuario_asking().getNombre(),comics);
     }
     public RequestSolicitudDTO EliminarSolicitud(Long id){
         Solicitud sols = solicitudesRepository.findById(id).get();
@@ -73,7 +71,7 @@ public class SolicitudService {
             comics.add(comicRepository.findById(c).get().getNombre());
         }
         solicitudesRepository.deleteById(id);
-        return new RequestSolicitudDTO(sols.getDescripcion(),sols.getOcupacion(), sols.getFecha(), sols.getUsuario_asking().getId(),comics);
+        return new RequestSolicitudDTO(sols.getDescripcion(),sols.getOcupacion(), sols.getFecha(), sols.getUsuario_asking().getNombre(),comics);
     }
     public ModificarSolicitudDTO Modificar(ModificarSolicitudDTO cambio, String Nombre){
         Usuario modU = usuarioRepository.findByNombre(Nombre);

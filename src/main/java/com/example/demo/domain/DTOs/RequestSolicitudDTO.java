@@ -16,7 +16,7 @@ public class RequestSolicitudDTO {
     private String Descripcion;
     private String Ocupacion;
     private String fecha;
-    private Long usuarioId;
+    private String nombre;
     private List<String> comics;  
 }
 
